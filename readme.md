@@ -94,6 +94,6 @@ For full description refer to `docs/windows.txt` in the main repository.
 If windivert cannot start as is run `win7/install_win7.cmd`. Or install ESU updates.
 
 ### ANTIVIRUS WARNING
-windivert may cause antivirus reaction. It's not a viruse, your antivirus is insane.
+windivert may cause antivirus reaction. It's not a virus, your antivirus is insane.
 It can treat windivert as potential risk or hacker instrument.
 Use exceptions or disable AV completely if you are affected.
