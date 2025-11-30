@@ -1,0 +1,3 @@
+# write nfqws2 parameters here
+--payload tls_client_hello --lua-desync=fake:blob=fake_default_tls:tcp_ts=-1000
+--payload=tls_client_hello --lua-desync=fake:blob=0x00000000:tcp_md5:repeats=1 --lua-desync=fake:blob=fake_default_tls:tcp_md5:tls_mod=rnd,dupsid:repeats=1 --lua-desync=multisplit:pos=2

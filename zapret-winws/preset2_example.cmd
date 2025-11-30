@@ -1,0 +1,41 @@
+start "zapret: http,https,quic" /min "%~dp0winws2.exe" ^
+--wf-tcp-out=80,443 ^
+--lua-init=@"%~dp0lua\zapret-lib.lua" --lua-init=@"%~dp0lua\zapret-antidpi.lua" ^
+--lua-init="fake_default_tls = tls_mod(fake_default_tls,'rnd,rndsni')" ^
+--blob=quic_google:@"%~dp0files\quic_initial_www_google_com.bin" ^
+--wf-raw-part=@"%~dp0windivert.filter\windivert_part.discord_media.txt" ^
+--wf-raw-part=@"%~dp0windivert.filter\windivert_part.stun.txt" ^
+--wf-raw-part=@"%~dp0windivert.filter\windivert_part.wireguard.txt" ^
+--wf-raw-part=@"%~dp0windivert.filter\windivert_part.quic_initial_ietf.txt" ^
+--filter-tcp=80 --filter-l7=http ^
+  --out-range=-d10 ^
+  --payload=http_req ^
+   --lua-desync=fake:blob=fake_default_http:ip_autottl=-2,3-20:ip6_autottl=-2,3-20:tcp_md5 ^
+   --lua-desync=fakedsplit:ip_autottl=-2,3-20:ip6_autottl=-2,3-20:tcp_md5 ^
+  --new ^
+--filter-tcp=443 --filter-l7=tls --hostlist="%~dp0files\list-youtube.txt" ^
+  --out-range=-d10 ^
+  --payload=tls_client_hello ^
+   --lua-desync=fake:blob=fake_default_tls:tcp_md5:repeats=11:tls_mod=rnd,dupsid,sni=www.google.com ^
+   --lua-desync=multidisorder:pos=1,midsld ^
+  --new ^
+--filter-tcp=443 --filter-l7=tls ^
+  --out-range=-d10 ^
+  --payload=tls_client_hello ^
+   --lua-desync=fake:blob=fake_default_tls:tcp_md5:tcp_seq=-10000:repeats=6 ^
+   --lua-desync=multidisorder:pos=midsld ^
+  --new ^
+--filter-udp=443 --filter-l7=quic --hostlist="%~dp0files\list-youtube.txt" ^
+  --out-range=-d10 ^
+  --payload=quic_initial ^
+   --lua-desync=fake:blob=quic_google:repeats=11 ^
+  --new ^
+--filter-udp=443 --filter-l7=quic ^
+  --out-range=-d10 ^
+  --payload=quic_initial ^
+   --lua-desync=fake:blob=fake_default_quic:repeats=11 ^
+  --new ^
+--filter-l7=wireguard,stun,discord ^
+  --out-range=-d10 ^
+  --payload=wireguard_initiation,wireguard_cookie,stun_binding_req,discord_ip_discovery ^
+   --lua-desync=fake:blob=0x00000000000000000000000000000000:repeats=2
