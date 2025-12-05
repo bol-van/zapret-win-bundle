@@ -1,0 +1,4 @@
+# write nfqws2 parameters here
+--payload tls_client_hello --lua-desync=fake:blob=fake_default_tls:tcp_ts=-1000
+--payload tls_client_hello --lua-desync=tcpseg:pos=0,-1:seqovl=1 --lua-desync=drop
+--payload tls_client_hello --lua-desync=luaexec:code="desync.pat=tls_mod(fake_default_tls,'rnd,rndsni,dupsid,padencap',desync.reasm_data)" --lua-desync=tcpseg:pos=0,-1:seqovl=#pat:seqovl_pattern=pat --lua-desync=drop

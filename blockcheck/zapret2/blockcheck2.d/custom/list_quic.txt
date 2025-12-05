@@ -1,0 +1,3 @@
+# write nfqws2 parameters here
+--payload quic_initial --lua-desync=fake:blob=fake_default_quic:repeats=11
+--payload quic_initial --lua-desync=send:ipfrag --lua-desync=drop
