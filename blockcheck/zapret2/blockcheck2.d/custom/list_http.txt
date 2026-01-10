@@ -1,0 +1,4 @@
+# write nfqws2 parameters here
+--payload=http_req --lua-desync=http_hostcase
+--payload=http_req --lua-desync=http_methodeol
+--payload=http_req --lua-desync=fake:blob=fake_default_http:tcp_ts=-1000
