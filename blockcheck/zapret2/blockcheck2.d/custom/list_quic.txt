@@ -1,0 +1,4 @@
+# write nfqws2 parameters here
+# WARNING : parameters with special symbols like "<" must be escaped or will cause error
+--payload quic_initial --lua-desync=fake:blob=fake_default_quic:repeats=11
+--payload quic_initial --lua-desync=send:ipfrag --lua-desync=drop
