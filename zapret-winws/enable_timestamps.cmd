@@ -6,7 +6,7 @@ if "%1%" == "doit" (
 	goto :end
 )
 
-"%~dp0elevator" %0 doit
+"%~dp0elevator" "%~f0" doit
 goto :eof
 
 :end

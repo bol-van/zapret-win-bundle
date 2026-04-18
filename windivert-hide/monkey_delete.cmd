@@ -2,8 +2,8 @@
 
 if "%1%" == "del" (
 	echo DELETE MONKEY DRIVER
-	sc delete monkey
 	sc stop monkey
+	sc delete monkey
 	goto :end
 )
 
@@ -14,7 +14,7 @@ echo.
 choice /C YN /M "Do you want to stop and delete monkey"
 if ERRORLEVEL 2 goto :eof
 
-"%~dp0..\tools\elevator" %0 del
+"%~dp0..\tools\elevator" "%~f0" del
 goto :eof
 
 :end
