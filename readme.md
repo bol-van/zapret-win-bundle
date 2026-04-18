@@ -25,7 +25,7 @@ requirements :
 * `preset2_example.cmd` : интерактивный запуск стратегии-примера на базе winws2 (не является готовым лекарством)
 * `preset2_wireguard.cmd` : интерактивный запуск обхода блокировки wireguard протокола на любых портах
 * `service*.cmd` : установка и управление службой windows (режим неинтерактивного автозапуска). НЕ ЗАПУСКАТЬ БЕЗ РЕДАКТИРОВАНИЯ !
-* `enable_tcp_timestamps.cmd` : включить таймштампы tcp. по умолчанию отключены. требуются для ts fooling.
+* `enable_timestamps.cmd` : включить таймштампы tcp. по умолчанию отключены. требуются для ts fooling.
 * `windivert_delete.cmd` : остановить и удалить драйвер windivert
 * `killall.exe` : программа из cygwin для посылки unix сигналов winws
 * `elevator.exe` : запускает программы от имени администратора
@@ -70,7 +70,7 @@ This is not one-button solution to open sites. zapret understanding is required 
 * `preset2_example.cmd` : run interactively example strategy using winws2
 * `preset2_wireguard.cmd` : run interactively wireguard protocol bypass
 * `service*.cmd` : windows service setup and control (non-interactive autostart mode)
-* `enable_tcp_timestamps.cmd` : enable tcp timestamps. they are disabled by default and required for ts fooling.
+* `enable_timestamps.cmd` : enable tcp timestamps. they are disabled by default and required for ts fooling.
 * `windivert_delete.cmd` : stop and delete windivert driver
 * `killall.exe` : cygwin tool used in reload_lists.cmd. allows to send signals to winws.
 * `elevator.exe` : simple tool to run a program as admin
