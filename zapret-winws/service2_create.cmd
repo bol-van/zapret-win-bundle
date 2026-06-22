@@ -45,7 +45,10 @@ set ARGS=^
 
 rem call :srvinst winws1
 set ARGS=--wf-raw-part=@\"%~dp0windivert.filter\windivert_part.wireguard.txt\" ^
---filter-l7=discord,stun --dpi-desync=fake
+--lua-init=@\"%~dp0lua\zapret-lib.lua\" --lua-init=@\"%~dp0lua\zapret-antidpi.lua\" ^
+--filter-l7=discord,stun ^
+--payload=discord_ip_discovery,stun ^
+--lua-desync=fake:blob=0x00000000000000000000000000000000:repeats=2
 rem call :srvinst winws2
 goto :eof
 
