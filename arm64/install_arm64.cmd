@@ -35,7 +35,7 @@ bcdedit /set {current} testsigning on
 echo replacing WinDivert64.sys with unsigned ARM64 version
 copy WinDivert64.sys ..\zapret-winws
 copy WinDivert64.sys ..\blockcheck\zapret\nfq
-copy WinDivert64.sys ..\blockcheck\zapret2\nfq
+copy WinDivert64.sys ..\blockcheck\zapret2\nfq2
 echo copying ip2net and mdig
 copy ip2net.exe ..\blockcheck\zapret\ip2net
 copy ip2net.exe ..\blockcheck\zapret2\ip2net
