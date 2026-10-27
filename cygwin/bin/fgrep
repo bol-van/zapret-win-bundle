@@ -1,0 +1,4 @@
+#!/bin/sh
+#cmd=${0##*/}
+#echo "$cmd: warning: $cmd is obsolescent; using grep -F" >&2
+exec grep -F "$@"
